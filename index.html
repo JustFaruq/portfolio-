@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JustFaruq — Full-stack Developer</title>
+<meta name="description" content="Full-stack developer building web apps and connected hardware. Projects, skills and contact.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0B; --line:#26282C; --text:#F2F2F0; --muted:#9AA0A6; --amber:#FFB93B;
+  --straw:#E5C76B; --brown:#B07A3A; --purple:#5B3F8C; --blue:#2B5EA7; --steel:#8A949E;
+  --head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"DM Sans","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:1.05rem;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+
+header.nav{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(10,10,11,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;height:4rem;gap:1rem}
+.logo{font-family:var(--head);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;text-decoration:none}
+.nav nav{display:flex;gap:clamp(.9rem,2.5vw,2rem);font-size:.95rem;overflow-x:auto}
+.nav nav a{text-decoration:none;padding:.3rem 0;border-bottom:2px solid transparent;white-space:nowrap}
+.nav nav a:hover,.nav nav a:focus-visible{border-color:var(--amber);color:var(--amber)}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;align-items:center;padding:6rem 0 3rem;cursor:crosshair;overflow:hidden}
+.hero-in{display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:end;width:100%}
+.no-photo .hero-in{grid-template-columns:1fr}
+.hello{color:var(--amber);font-weight:500;margin-bottom:.8rem}
+h1{font-family:var(--head);font-weight:800;letter-spacing:-.04em;line-height:.95}
+h1 .im{display:block;font-size:clamp(2rem,5vw,3.4rem);margin-bottom:.2rem}
+#name{
+  --x:30%;--y:50%;--r:200px;display:inline-block;font-size:clamp(3.4rem,13vw,10rem);padding-bottom:.08em;user-select:none;
+  color:var(--steel);
+  background-image:radial-gradient(circle var(--r) at var(--x) var(--y),#FFF3CF 0,var(--amber) 9%,var(--brown) 20%,var(--purple) 33%,var(--blue) 46%,var(--steel) 66%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.role{font-size:clamp(1.3rem,2.6vw,1.9rem);margin:1.2rem 0 1.8rem;font-weight:500}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:500;font-size:.9rem;padding:.8rem 1.6rem;border-radius:999px;border:1px solid var(--text);transition:background .2s,color .2s,border-color .2s}
+.btn.fill{background:var(--amber);border-color:var(--amber);color:#111}
+.btn:hover{background:var(--text);color:#111;border-color:var(--text)}
+.gauge{margin-top:2rem;color:var(--muted);font-size:.9rem}
+.gauge b{color:var(--text);font-family:var(--head);font-variant-numeric:tabular-nums;margin-left:.4rem}
+.photo img{display:block;width:100%;max-height:82vh;object-fit:contain;object-position:bottom right;margin-left:auto}
+.no-photo .photo{display:none}
+
+/* SECTIONS */
+section{padding:clamp(4rem,9vw,7rem) 0}
+.title{position:relative;text-align:center;margin-bottom:3.2rem;isolation:isolate}
+.title h2{font-family:var(--head);font-weight:800;font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1.1}
+.title p{color:var(--muted);max-width:44ch;margin:.5rem auto 0}
+.title::before{content:attr(data-ghost);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:-1;font-family:var(--head);font-weight:800;font-size:clamp(4rem,15vw,10rem);letter-spacing:-.05em;color:#fff;opacity:.05;white-space:nowrap;pointer-events:none}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.about-grid.no-photo{grid-template-columns:minmax(0,760px);justify-content:center}
+.about-grid.no-photo .about-photo{display:none}
+.about-photo img{width:100%;display:block}
+.about-text p{color:#C9CDD1;max-width:58ch;margin-bottom:1.6rem}
+dl{display:grid;grid-template-columns:7.5rem 1fr;gap:.55rem 1rem;font-size:.98rem;margin-bottom:2rem}
+dt{font-weight:500}
+dd{color:var(--muted);word-break:break-word}
+dd a{text-underline-offset:3px}
+
+/* SKILLS */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem 3.5rem}
+.sk .row{display:flex;justify-content:space-between;font-weight:500;margin-bottom:.5rem}
+.sk .track{height:6px;background:#1B1C1F;border-radius:3px;overflow:hidden}
+.sk .fill{height:100%;background:var(--amber);border-radius:3px}
+.sk.plain{border-bottom:1px solid var(--line);padding-bottom:.7rem}
+.sk.plain .row{margin:0}
+
+/* PROJECTS */
+.work{border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line);position:relative}
+details::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--amber);transition:width .25s}
+details:hover::before,details[open]::before{width:6px}
+summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:baseline;padding:1.5rem 1rem 1.5rem 1.4rem}
+summary::-webkit-details-marker{display:none}
+.t{font-family:var(--head);font-weight:800;font-size:clamp(1.5rem,3.6vw,2.3rem);letter-spacing:-.03em;line-height:1.1}
+.s{color:var(--amber);font-size:.95rem;text-align:right}
+.pbody{padding:0 1.4rem 2rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,15rem);gap:2rem}
+.pbody p{color:#C9CDD1;max-width:60ch}
+.pbody ul{list-style:none;font-size:.92rem;color:var(--muted)}
+.pbody li{padding:.35rem 0;border-bottom:1px solid var(--line)}
+.pbody .btn{margin-top:1.2rem}
+
+/* CONTACT */
+.contact{text-align:center}
+.contact a.big{font-family:var(--head);font-weight:800;font-size:clamp(1.4rem,5.2vw,3.6rem);letter-spacing:-.03em;text-decoration:none;word-break:break-word;border-bottom:5px solid var(--amber)}
+.contact a.big:hover{color:var(--amber)}
+.links{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:2.2rem}
+footer{border-top:1px solid var(--line);padding:1.6rem 0 2.4rem;color:var(--muted);font-size:.9rem;text-align:center}
+
+@media(max-width:760px){
+  .hero-in,.about-grid,.pbody,.skills{grid-template-columns:1fr}
+  summary{grid-template-columns:1fr}.s{text-align:left}
+  .photo img{max-height:60vh;margin:0 auto;object-position:bottom center}
+  dl{grid-template-columns:6rem 1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#home" id="logo">JUSTFARUQ</a>
+  <nav aria-label="Main"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main>
+<section class="hero no-photo" id="home">
+  <div class="wrap">
+    <div class="hero-in">
+      <div>
+        <p class="hello">Hello!</p>
+        <h1><span class="im">I’m</span><span id="name"></span></h1>
+        <p class="role">Full-stack Web Developer</p>
+        <div class="btns"><a class="btn fill" href="#contact">Hire me</a><a class="btn" href="#projects">My works</a></div>
+        <p class="gauge">Move your cursor over the name to heat it<b id="temp">20°C</b></p>
+      </div>
+      <div class="photo"><img id="heroPhoto" alt="Portrait of Faruq"></div>
+    </div>
+  </div>
+</section>
+
+<section id="about"><div class="wrap">
+  <div class="title" data-ghost="About"><h2>About me</h2></div>
+  <div class="about-grid no-photo" id="aboutGrid">
+    <div class="about-photo"><img id="aboutPhoto" alt=""></div>
+    <div class="about-text">
+      <p id="aboutText"></p>
+      <dl id="info"></dl>
+      <div class="btns" id="aboutBtns"></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <div class="title" data-ghost="Skills"><h2>My skills</h2></div>
+  <div class="skills" id="skillList"></div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <div class="title" data-ghost="Projects"><h2>My projects</h2><p>Open a row for the details.</p></div>
+  <div class="work" id="list"></div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <div class="title" data-ghost="Contact"><h2>Have something to build?</h2><p>Open to freelance work, internships and collaborations.</p></div>
+  <a class="big" id="mail" href="#"></a>
+  <div class="links" id="links"></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> <span id="fullName"></span></div></footer>
+
+<script>
+/* ===== EDIT THIS BLOCK: all your content lives here ===== */
+const SITE = {
+  heroName: "JustFaruq",                 // the big name in the hero (heat effect)
+  fullName: "Faruq Adetoyosi Okunade",   // About table + footer
+  role: "Full-stack Web Developer",
+  email: "farukokunade415@gmail.com",
+  photo: "",                             // e.g. "photo.png" (a cut-out with transparent background looks best). Empty = no photo.
+  cv: "",                                // e.g. "Faruq-CV.pdf". Empty = no Download CV button.
+  location: "",                          // e.g. "Lagos, Nigeria". Empty = hidden.
+  about: "I build full-stack web apps and connected hardware, and I like to take an idea from rough sketch to something people actually use. Some of my work is for paying clients. I’m most interested in the space between the screen and the physical world: tools for specialists, and systems that sense and respond.",
+  links: [
+    {label:"GitHub", href:"https://github.com/JustFaruq"},
+    {label:"LinkedIn", href:"https://www.linkedin.com/in/faruq-okunade-a12745338/"},
+    {label:"X",      href:"https://x.com/justfaruq65"}
+  ],
+  /* level = percentage (0-100). Leave level out to show the skill without a bar. */
+  skills: [
+    {name:"TypeScript"},{name:"JavaScript"},{name:"HTML and CSS"},
+    // add more languages here, e.g. {name:"Python"},{name:"C++"}
+    {name:"Next.js"},{name:"Tailwind CSS"},{name:"Supabase"},
+    {name:"Firebase"},{name:"Paystack payments"},{name:"Git and Vercel"},{name:"ESP32 and sensors"}
+  ],
+  projects: [
+    {
+      title:"Metallurgy Toolbox", status:"Live",
+      text:"An installable web app (PWA) that brings almost everything in metallurgy and materials science into one place: 11 calculators, a lab assistant, a materials selector and identifier, a tutor and a heat treatment simulator.",
+      stack:["Next.js","TypeScript","Tailwind CSS","PWA"], link:{label:"Open the app", href:"https://metallurgy-toolbox.vercel.app"}
+    },
+    {
+      title:"Internet Detective", status:"Live",
+      text:"An OSINT web app for investigating domains and networks in one place: WHOIS, DNS, IP lookup, SSL checks and URL scanning.",
+      stack:["Next.js","TypeScript","Tailwind CSS","Vercel"], link:{label:"Open the app", href:"https://internet-detective-orpin.vercel.app/"}
+    },
+    {
+      title:"UNILORIN Bus Ticketing", status:"Live",
+      text:"A campus bus ticketing app with accounts, booking, Paystack payments, QR tickets and an admin panel. I built the passenger side and the backend; a teammate built the conductor scanner.",
+      stack:["Next.js","Supabase","Paystack","QR tickets"], link:{label:"Open the app", href:"http://unilorin-bus-ticketing.vercel.app/"}
+    },
+    {
+      title:"SWAMPDS", status:"Team project",
+      text:"Smart Water Management and Pipeline Leak Detection System. An ESP32-based design with three flow sensors along a pipeline: when their readings stop agreeing, it flags a leak. A web dashboard shows the live data.",
+      stack:["ESP32","Flow sensors","Firebase","Web dashboard"], link:null
+    },
+    {
+      title:"Hostel Booking App", status:"Client project",
+      text:"A hostel and accommodation booking app, built for a hostel owner and handed over to them.",
+      stack:[], link:null
+    }
+  ]
+};
+
+/* ===== Render ===== */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+$("name").textContent = SITE.heroName;
+$("logo").textContent = SITE.heroName.toUpperCase();
+document.querySelector(".role").textContent = SITE.role;
+$("fullName").textContent = SITE.fullName;
+$("yr").textContent = new Date().getFullYear();
+$("aboutText").textContent = SITE.about;
+
+if (SITE.photo) {
+  $("heroPhoto").src = $("aboutPhoto").src = SITE.photo;
+  document.querySelector(".hero").classList.remove("no-photo");
+  $("aboutGrid").classList.remove("no-photo");
+}
+
+const rows = [["Name", esc(SITE.fullName)], ["Email", `<a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`]];
+if (SITE.location) rows.push(["Location", esc(SITE.location)]);
+SITE.links.forEach(l => rows.push([l.label, `<a href="${esc(l.href)}" rel="noopener">${esc(l.href.replace(/^https?:\/\//, ""))}</a>`]));
+$("info").innerHTML = rows.map(([k, v]) => `<dt>${esc(k)}:</dt><dd>${v}</dd>`).join("");
+$("aboutBtns").innerHTML = (SITE.cv ? `<a class="btn fill" href="${esc(SITE.cv)}" download>Download CV</a>` : "") + `<a class="btn" href="#contact">Get in touch</a>`;
+
+$("skillList").innerHTML = SITE.skills.map(s => s.level != null
+  ? `<div class="sk"><div class="row"><span>${esc(s.name)}</span><span>${esc(s.level)}%</span></div><div class="track"><div class="fill" style="width:${Math.max(0, Math.min(100, +s.level))}%"></div></div></div>`
+  : `<div class="sk plain"><div class="row"><span>${esc(s.name)}</span></div></div>`).join("");
+
+$("list").innerHTML = SITE.projects.map(p => `
+  <details>
+    <summary><span class="t">${esc(p.title)}</span><span class="s">${esc(p.status)}</span></summary>
+    <div class="pbody">
+      <div><p>${esc(p.text)}</p>${p.link ? `<a class="btn" href="${esc(p.link.href)}" target="_blank" rel="noopener">${esc(p.link.label)}</a>` : ""}</div>
+      ${p.stack.length ? `<ul>${p.stack.map(s => `<li>${esc(s)}</li>`).join("")}</ul>` : ""}
+    </div>
+  </details>`).join("");
+
+$("mail").href = "mailto:" + SITE.email; $("mail").textContent = SITE.email;
+$("links").innerHTML = SITE.links.map(l => `<a class="btn" href="${esc(l.href)}" rel="noopener">${esc(l.label)}</a>`).join("");
+
+/* ===== Heat effect: rub the name and it heats through steel's temper colours ===== */
+(() => {
+  const hero = document.getElementById("home"), name = $("name"), temp = $("temp");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let heat = reduce ? 0.5 : 1, x = 0, y = 0, lx = null, ly = null;
+  const b0 = name.getBoundingClientRect(); x = b0.width * 0.3; y = b0.height * 0.5;
+
+  hero.addEventListener("pointermove", e => {
+    const b = name.getBoundingClientRect(); x = e.clientX - b.left; y = e.clientY - b.top;
+    if (lx !== null) heat = Math.min(1, heat + Math.hypot(e.clientX - lx, e.clientY - ly) / 900);
+    lx = e.clientX; ly = e.clientY;
+  });
+  hero.addEventListener("pointerleave", () => { lx = ly = null; });
+
+  (function frame() {
+    if (!reduce) heat *= 0.988;
+    name.style.setProperty("--x", x + "px");
+    name.style.setProperty("--y", y + "px");
+    name.style.setProperty("--r", (80 + heat * 340) + "px");
+    temp.textContent = Math.round(20 + heat * 880) + "°C";
+    requestAnimationFrame(frame);
+  })();
+})();
+</script>
+</body>
+</html>
